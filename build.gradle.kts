@@ -16,6 +16,11 @@ repositories {
 
 dependencies {
     implementation("io.cloudevents:cloudevents-json-jackson:2.5.0")
+    constraints {
+        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1") {
+            because("CVE-2022-42003 and CVE-2022-42004")
+        }
+    }
     implementation("org.springframework.amqp:spring-amqp:3.1.2")
 
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
