@@ -7,11 +7,12 @@ plugins {
 }
 
 group = "de.lyca.cloudevents"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
+    withJavadocJar()
 }
 
 repositories {
