@@ -1,14 +1,17 @@
 plugins {
     `java-library`
-    `java-library-distribution`
+    signing
+    `maven-publish`
+    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
     jacoco
 }
 
 group = "de.lyca.cloudevents"
-version = "0.1.0"
+version = "1.0.0-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
+    withSourcesJar()
 }
 
 repositories {
@@ -44,4 +47,45 @@ tasks.jacocoTestReport {
     reports {
         csv.required = true
     }
+}
+
+nexusPublishing {
+    repositories {
+        sonatype()
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+            pom {
+                name = "cloudevents-spring-amqp"
+                description = "CloudEvents Binding for Spring AMQP"
+                url = "https://github.com/lyca/cloudevents-spring-amqp"
+                licenses {
+                    license {
+                        name = "The Apache License, Version 2.0"
+                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "lyca"
+                        name = "Lars Michele"
+                        email = "lars.michele@tu-dortmund.de"
+                    }
+                }
+                scm {
+                    connection = "scm:git:git://github.com/lyca/cloudevents-spring-amqp.git"
+                    developerConnection = "scm:git:git://github.com/lyca/cloudevents-spring-amqp.git"
+                    url = "https://github.com/lyca/cloudevents-spring-amqp"
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign(publishing.publications.findByName("maven"))
 }
