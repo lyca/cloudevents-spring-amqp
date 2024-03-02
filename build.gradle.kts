@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     `java-library-distribution`
+    jacoco
 }
 
 group = "de.lyca.cloudevents"
@@ -32,4 +33,15 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        csv.required = true
+    }
 }
