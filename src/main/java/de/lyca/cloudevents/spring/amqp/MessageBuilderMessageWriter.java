@@ -36,7 +36,8 @@ import org.springframework.amqp.core.MessageProperties;
  * headers).
  *
  * @author Lars Michele
- * See also {@link io.cloudevents.spring.messaging.MessageBuilderMessageWriter} used as stencil for the implementation
+ * @see <a href="https://github.com/cloudevents/sdk-java/blob/main/spring/src/main/java/io/cloudevents/spring/messaging/MessageBuilderMessageWriter.java">
+ *     io.cloudevents.spring.messaging.MessageBuilderMessageWriter</a>, used as stencil for the implementation
  */
 class MessageBuilderMessageWriter implements CloudEventWriter<Message>, MessageWriter<MessageBuilderMessageWriter, Message> {
 
