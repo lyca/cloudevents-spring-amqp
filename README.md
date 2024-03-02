@@ -1,2 +1,2 @@
-# spring-amqp-cloudevents
+# cloudevents-spring-amqp
 CloudEvents Binding for Spring AMQP
