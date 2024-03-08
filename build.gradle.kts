@@ -7,12 +7,19 @@ plugins {
 }
 
 group = "de.lyca.cloudevents"
-version = "1.0.0"
+version = "1.1.0"
+
+sourceSets {
+    create("structuredContentMode") {}
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
+    registerFeature("structuredContentMode") {
+        usingSourceSet(sourceSets["structuredContentMode"])
+    }
 }
 
 repositories {
@@ -20,13 +27,20 @@ repositories {
 }
 
 dependencies {
-    implementation("io.cloudevents:cloudevents-json-jackson:2.5.0")
+    api("io.cloudevents:cloudevents-core")
+    api("org.springframework.amqp:spring-amqp")
+    "structuredContentModeApi"("io.cloudevents:cloudevents-json-jackson")
+
     constraints {
-        implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1") {
+        implementation("org.springframework.amqp:spring-amqp:[3.0,3.99]")
+        implementation("io.cloudevents:cloudevents-core:[2.0,2.99]")
+        implementation("io.cloudevents:cloudevents-json-jackson:[2.0,2.99]")
+        implementation("com.fasterxml.jackson.core:jackson-databind:[2.16.1,2.99]") {
             because("CVE-2022-42003 and CVE-2022-42004")
         }
     }
-    implementation("org.springframework.amqp:spring-amqp:3.1.2")
+
+    testImplementation("io.cloudevents:cloudevents-json-jackson")
 
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")

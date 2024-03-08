@@ -8,13 +8,13 @@ CloudEvents Binding for Spring AMQP
 **Gradle (Kotlin)**
 
 ```kotlin
-implementation("de.lyca.cloudevents:cloudevents-spring-amqp:1.0.0")
+implementation("de.lyca.cloudevents:cloudevents-spring-amqp:1.1.0")
 ```
 
 **Gradle (Groovy)**
 
 ```groovy
-implementation 'de.lyca.cloudevents:cloudevents-spring-amqp:1.0.0'
+implementation 'de.lyca.cloudevents:cloudevents-spring-amqp:1.1.0'
 ```
 
 **Apache Maven**
@@ -23,7 +23,7 @@ implementation 'de.lyca.cloudevents:cloudevents-spring-amqp:1.0.0'
 <dependency>
     <groupId>de.lyca.cloudevents</groupId>
     <artifactId>cloudevents-spring-amqp</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
