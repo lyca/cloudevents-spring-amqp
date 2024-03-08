@@ -32,7 +32,7 @@ import org.springframework.amqp.core.MessageProperties;
  *
  * @author Lars Michele
  * @see <a href="https://github.com/cloudevents/sdk-java/blob/main/spring/src/main/java/io/cloudevents/spring/messaging/MessageBinaryMessageReader.java">
- *     io.cloudevents.spring.messaging.MessageBinaryMessageReader</a>, used as stencil for the implementation
+ * io.cloudevents.spring.messaging.MessageBinaryMessageReader</a>, used as stencil for the implementation
  */
 class MessageBinaryMessageReader extends BaseGenericBinaryMessageReaderImpl<String, Object> {
 
@@ -50,7 +50,8 @@ class MessageBinaryMessageReader extends BaseGenericBinaryMessageReaderImpl<Stri
 
 	@Override
 	protected boolean isCloudEventsHeader(String key) {
-		return key != null && key.length() > CE_PREFIX.length() && StringUtils.startsWithIgnoreCase(key, CE_PREFIX);
+		return key != null && key.length() > CE_PREFIX.length() && (StringUtils.startsWithIgnoreCase(key, CE_PREFIX)
+				|| StringUtils.startsWithIgnoreCase(key, ALT_CE_PREFIX));
 	}
 
 	@Override
