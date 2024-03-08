@@ -63,6 +63,9 @@ public class CloudEventMessageConverter implements MessageConverter {
 
     private String version(MessageProperties properties) {
         Object header = properties.getHeader(CloudEventsHeaders.SPEC_VERSION);
+        if (header == null) {
+            header = properties.getHeader(CloudEventsHeaders.ALT_SPEC_VERSION);
+        }
         return header == null ? null : header.toString();
     }
 
@@ -78,6 +81,9 @@ public class CloudEventMessageConverter implements MessageConverter {
         String contentType = properties.getContentType();
         if (contentType == null) {
             Object header = properties.getHeader(CloudEventsHeaders.CONTENT_TYPE);
+            if (header == null) {
+                header = properties.getHeader(CloudEventsHeaders.ALT_CONTENT_TYPE);
+            }
             return header == null ? null : header.toString();
         }
         return contentType;

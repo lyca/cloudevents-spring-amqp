@@ -39,7 +39,16 @@ public class CloudEventsHeaders {
 	 */
 	public static final String SPEC_VERSION = CE_PREFIX + "specversion";
 	/**
+	 * The alternative spec version header name.
+	 */
+	public static final String ALT_SPEC_VERSION = ALT_CE_PREFIX + "specversion";
+	/**
 	 * The data content-type header name.
 	 */
 	public static final String CONTENT_TYPE = CE_PREFIX + "datacontenttype";
+
+	/**
+	 * The alternative data content-type header name.
+	 */
+	public static final String ALT_CONTENT_TYPE = ALT_CE_PREFIX + "datacontenttype";
 }
