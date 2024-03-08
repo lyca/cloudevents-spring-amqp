@@ -29,7 +29,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 
 /**
  * A {@link MessageConverter} that can translate to and from a {@link Message} and a {@link CloudEvent}.
- * The {@link CloudEventContext} is canonicalized, with key names given a {@code ce-} prefix in the
+ * The {@link CloudEventContext} is canonicalized, with key names given a {@code cloudEvents_} prefix in the
  * {@link MessageProperties}.
  *
  * @author Lars Michele
